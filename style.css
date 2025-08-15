@@ -1,0 +1,235 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f6f6f6;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  background: #fff;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 2em;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px #ccc;
+}
+header, h1 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+.description {
+  background: #e5f2ff;
+  border-left: 4px solid #3386c5;
+  padding: 1em;
+  margin: 30px auto 1.5em auto;
+  border-radius: 4px;
+  color: #224466;
+  font-size: 1.1em;
+  box-shadow: 0 1px 4px #dde6ee;
+  max-width: 500px;
+  text-align: center;
+}
+form {
+  margin-bottom: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+}
+form label {
+  flex-basis: 100%;
+  margin-top: 1em;
+}
+form input,
+form select {
+  width: 100%;
+  padding: 0.5em;
+  border-radius: 3px;
+  border: 1px solid #bbb;
+  box-sizing: border-box;
+}
+form button {
+  margin-top: 1em;
+  padding: 0.5em 1.5em;
+  border-radius: 3px;
+  border: none;
+  background: #3386c5;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s;
+}
+form button:hover {
+  background: #22649c;
+}
+#loginStatus {
+  margin: 1em 0;
+  text-align: center;
+}
+a {
+  display: block;
+  text-align: left;
+  margin-top: 1em;
+  color: #6a1eb1;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin: 1em 0 2em 0;
+}
+
+nav button {
+  background: #3386c5;
+  color: #fff;
+  border: none;
+  padding: 0.7em 1.5em;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+nav button:hover {
+  background: #22649c;
+}
+
+section {
+  margin-bottom: 2em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 1em;
+}
+
+th, td {
+  padding: 0.7em;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+th {
+  background: #e5f2ff;
+  color: #224466;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+button {
+  padding: 0.5em 1.2em;
+  border-radius: 3px;
+  border: none;
+  background: #3386c5;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s;
+}
+button:hover {
+  background: #22649c;
+}
+button[style*="background:#c52e33"] {
+  background: #c52e33 !important;
+}
+button[style*="background:#c52e33"]:hover {
+  background: #a51e22 !important;
+}
+
+/* Modal pour édition */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2em;
+  border-radius: 8px;
+  min-width: 300px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container,
+  .description,
+  table {
+    max-width: 95vw;
+    font-size: 1em;
+  }
+  th, td {
+    font-size: 0.95em;
+    padding: 0.5em;
+  }
+  .modal-content {
+    min-width: 200px;
+    padding: 1em;
+  }
+}
+.dashboard-nav {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  background: #e5f2ff;
+  padding: 1em 2em;
+  align-items: center;
+}
+.dashboard-nav a, .dashboard-nav button {
+  background: none;
+  color: #224466;
+  font-weight: bold;
+  border: none;
+  margin-left: 1em;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+.dashboard-nav a:hover, .dashboard-nav button:hover {
+  color: #3386c5;
+  text-decoration: underline;
+}
+.dashboard-main {
+  max-width: 900px;
+  margin: 2em auto;
+}
+.dashboard-userinfo {
+  margin-bottom: 2em;
+  background: #fff;
+  padding: 1.5em;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px #ccc;
+}
+.dashboard-userinfo h2 {
+  margin-top: 0;
+}
+.dashboard-reservations table {
+  margin-top: 1em;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Documentation API Port Russell</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    h1, h2 { color: #2A6F97; }
+    code, pre { background: #f2f2f2; padding: 2px 6px; border-radius: 3px; }
+    section { margin-bottom: 2em; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 6px; text-align: left; }
+    th { background: #e6f2ff; }
+  </style>
+</head>
+<body>
+  <h1>Documentation de l’API Port Russell</h1>
+
+  <section>
+    <h2>Catways</h2>
+    <table>
+      <tr>
+        <th>Méthode</th><th>URL</th><th>Description</th>
+      </tr>
+      <tr>
+        <td>GET</td><td><code>/catways</code></td><td>Liste tous les catways</td>
+      </tr>
+      <tr>
+        <td>GET</td><td><code>/catways/:id</code></td><td>Voir un catway par numéro</td>
+      </tr>
+      <tr>
+        <td>POST</td><td><code>/catways</code></td><td>Créer un catway</td>
+      </tr>
+      <tr>
+        <td>PUT</td><td><code>/catways/:id</code></td><td>Modifier un catway</td>
+      </tr>
+      <tr>
+        <td>DELETE</td><td><code>/catways/:id</code></td><td>Supprimer un catway</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Réservations (sous-ressource de catway)</h2>
+    <table>
+      <tr>
+        <th>Méthode</th><th>URL</th><th>Description</th>
+      </tr>
+      <tr>
+        <td>GET</td><td><code>/catways/:id/reservations</code></td><td>Liste les réservations d’un catway</td>
+      </tr>
+      <tr>
+        <td>GET</td><td><code>/catways/:id/reservations/:idReservation</code></td><td>Voir une réservation précise</td>
+      </tr>
+      <tr>
+        <td>POST</td><td><code>/catways/:id/reservations</code></td><td>Créer une réservation</td>
+      </tr>
+      <tr>
+        <td>PUT</td><td><code>/catways/:id/reservations/:idReservation</code></td><td>Modifier une réservation</td>
+      </tr>
+      <tr>
+        <td>DELETE</td><td><code>/catways/:id/reservations/:idReservation</code></td><td>Supprimer une réservation</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Exemple d’appel POST réservation</h2>
+    <pre>
+POST /catways/1/reservations
+Content-Type: application/json
+
+{
+  "clientName": "Thomas Martin",
+  "boatName": "Carolina",
+  "startDate": "2024-05-21T06:00:00Z",
+  "endDate": "2024-10-27T06:00:00Z"
+}
+{
+        "catwayNumber": 2,
+        "clientName": "John Doe",
+        "boatName": "Groeland",
+        "startDate": "2024-05-18T06:00:00Z",
+        "endDate": "2024-11-30T06:00:00Z"
+    },
+    {
+        "catwayNumber": 3,
+        "clientName": "Margareth Wurtz",
+        "boatName": "Sirène",
+        "startDate": "2024-06-20T06:00:00Z",
+        "endDate": "2024-08-27T06:00:00Z"
+    },
+    {
+        "catwayNumber": 7,
+        "clientName": "Ralph Laurent",
+        "boatName": "Surcouf",
+        "startDate": "2024-07-01T06:00:00Z",
+        "endDate": "2024-10-13T06:00:00Z"
+    },
+    {
+        "catwayNumber": 11,
+        "clientName": "Jack Sparrow",
+        "boatName": "Black perl",
+        "startDate": "2024-08-13T06:00:00Z",
+        "endDate": "2024-09-13T06:00:00Z"
+    },
+    {
+        "catwayNumber": 13,
+        "clientName": "Jacky Snow",
+        "boatName": "Léandra",
+        "startDate": "2024-09-18T06:00:00Z",
+        "endDate": "2024-12-23T06:00:00Z"
+    }
+]
+    </pre>
+    <p>Réponse attendue : <code>201 Created</code> avec la réservation créée.</p>
+  </section>
+
+  <a href="./index.html">Retour à l’accueil</a>
+</body>
+</html>

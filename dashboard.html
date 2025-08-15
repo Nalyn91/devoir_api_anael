@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tableau de bord - Port Russell</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <nav class="dashboard-nav">
+    <a href="./catways.html">Catways</a>
+    <a href="./reservations.html">Réservations</a>
+    <a href="./users.html">Utilisateurs</a>
+    <a href="./doc.html" target="_blank">Documentation API</a>
+    <button id="logoutBtn">Déconnexion</button>
+  </nav>
+
+  <main class="dashboard-main">
+    <section class="dashboard-userinfo">
+      <h2>Bienvenue, <span id="userName"></span></h2>
+      <p>Email : <span id="userEmail"></span></p>
+      <p>Date du jour : <span id="currentDate"></span></p>
+    </section>
+
+    <section class="dashboard-reservations">
+      <h2>Réservations en cours</h2>
+      <table id="reservationsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Utilisateur</th>
+            <th>Catway</th>
+            <th>Date</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- réservations -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+  <script>
+    // date 
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('fr-FR');
+
+    function loadUserInfo() {
+      
+      const user = JSON.parse(localStorage.getItem('user')) || { name: "John Doe", email: "john.doe@gmail.com" };
+      document.getElementById('userName').textContent = user.name;
+      document.getElementById('userEmail').textContent = user.email;
+    }
+    loadUserInfo();
+
+    // déconnexion
+    document.getElementById('logoutBtn').onclick = function() {
+      
+      localStorage.removeItem('user');
+      window.location.href = "index.html"; // accueil
+    };
+
+    async function loadReservations() {
+      
+      const res = await fetch('/reservations?status=encours'); 
+      const reservations = await res.json();
+      const tbody = document.querySelector("#reservationsTable tbody");
+      tbody.innerHTML = "";
+      reservations.forEach((r, i) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${i + 1}</td>
+          <td>${r.userName || r.user || ''}</td>
+          <td>${r.catwayNumber || r.catway || ''}</td>
+          <td>${r.date ? new Date(r.date).toLocaleDateString('fr-FR') : ''}</td>
+          <td>${r.status || 'En cours'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    loadReservations();
+  </script>
+</body>
+</html>

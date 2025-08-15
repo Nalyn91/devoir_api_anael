@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestion des Catways</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>Gestion des Catways</h1>
+  <section>
+    <h2>Créer un nouveau catway</h2>
+    <form id="catway-createForm">
+      <input type="number" id="catway-newNumber" placeholder="Numéro" required>
+      <select id="catway-newType" required>
+        <option value="">Type</option>
+        <option value="short">short</option>
+        <option value="long">long</option>
+      </select>
+      <input type="text" id="catway-newState" placeholder="État" required>
+      <button type="submit">Créer</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Liste des catways</h2>
+    <table id="catway-table">
+      <thead>
+        <tr>
+          <th>Numéro</th>
+          <th>Type</th>
+          <th>État</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- catways -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Modal -->
+  <div id="catway-editModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" id="catway-closeEdit">&times;</span>
+      <h2>Modifier le catway</h2>
+      <form id="catway-editForm">
+        <input type="hidden" id="catway-editId">
+        <input type="number" id="catway-editNumber" required>
+        <select id="catway-editType" required>
+          <option value="short">short</option>
+          <option value="long">long</option>
+        </select>
+        <input type="text" id="catway-editState" required>
+        <button type="submit">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

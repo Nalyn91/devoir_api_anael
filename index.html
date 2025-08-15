@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil Port Russell API</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+  <h1>Bienvenue sur l’API Port Russell</h1>
+  </header>
+
+  <p class="description">
+  Nous gérons les réservations du port Russel, cette petite plateforme d'amarrage sur pilotis.<br>
+  Connectez-vous pour accéder aux fonctionnalités sécurisées et à la documentation complète.
+</p>
+
+<main>
+<div class="container">
+  <form id="loginForm">
+    <label for="username">Utilisateur :</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Connexion</button>
+  </form>
+  <div id="loginStatus"></div>
+  <a href="./doc.html">Accéder à la documentation de l’API</a>
+</div>
+</main>
+
+   <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const res = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      document.getElementById('loginStatus').textContent = data.message;
+    });
+  </script>
+</body>
+</html>
